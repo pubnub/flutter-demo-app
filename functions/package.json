@@ -1,0 +1,17 @@
+{
+  "name": "pubnub-flutter-demo-app-functions",
+  "private": true,
+  "devDependencies": {
+    "@types/node": "13.13.2",
+    "@wessberg/rollup-plugin-ts": "^1.2.24",
+    "rollup": "^2.7.1",
+    "typescript": "^3.8.3"
+  },
+  "prettier": {
+    "semi": false,
+    "singleQuote": true
+  },
+  "scripts": {
+    "build": "rollup --config"
+  }
+}
