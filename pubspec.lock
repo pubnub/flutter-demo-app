@@ -229,10 +229,10 @@ packages:
   pubnub:
     dependency: "direct main"
     description:
-      path: "../dart-private"
-      relative: true
-    source: path
-    version: "1.0.3"
+      name: pubnub
+      url: "https://pub.dartlang.org"
+    source: hosted
+    version: "1.0.4"
   quiver:
     dependency: transitive
     description:
