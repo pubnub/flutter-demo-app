@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class AddFriendModal extends StatelessWidget {
-  TextEditingController _emailController = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
 
   @override
   Widget build(BuildContext context) {

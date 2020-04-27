@@ -188,6 +188,7 @@ class _LoginScreenState extends State<LoginScreen> {
               height: 30,
             ),
             PinCodeTextField(
+              textInputType: TextInputType.number,
               length: 6,
               controller: _codeController,
               backgroundColor: Theme.of(context).scaffoldBackgroundColor,

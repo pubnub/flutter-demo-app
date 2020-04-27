@@ -1,18 +1,18 @@
 import pubnub from 'pubnub'
 
 import { Context, assertNotInternal, assertSenderSystemChannel } from './utils'
-import { Profile } from '../models'
+import { Invitations } from '../models'
 
-export async function handleMyProfile(ctx: Context) {
+export async function handleMyInvitations(ctx: Context) {
   const senderUuid = ctx.request.params.uuid
   const responseId = ctx.request.message.requestId
 
   assertNotInternal(ctx)
   assertSenderSystemChannel(ctx)
 
-  const profile = await ctx.storage.load(Profile, senderUuid)
+  const invitations = await ctx.storage.load(Invitations, senderUuid)
 
-  if (profile === null) {
+  if (invitations === null) {
     await pubnub.publish({
       channel: `system.${senderUuid}`,
       message: {
@@ -25,7 +25,7 @@ export async function handleMyProfile(ctx: Context) {
       channel: `system.${senderUuid}`,
       message: {
         responseId: responseId,
-        payload: profile.toJson(),
+        payload: invitations.invitations,
       },
     })
   }

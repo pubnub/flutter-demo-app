@@ -1,4 +1,4 @@
-import { KVStore } from 'kvstore'
+import kvstore, { KVStore } from 'kvstore'
 
 type Constructor<T extends IModel> = {
   new (...[]: any[]): T
@@ -6,9 +6,9 @@ type Constructor<T extends IModel> = {
   storagePrefix: string
 }
 
-abstract class IModel {
+export abstract class IModel {
   abstract key(): string
-  abstract toJson(): string
+  abstract toJson(): Record<string, any>
 }
 
 export class Model<T extends IModel> {
@@ -31,7 +31,7 @@ export class Storage {
   private kvstore: KVStore
 
   constructor() {
-    this.kvstore = require('kvstore')
+    this.kvstore = kvstore
   }
 
   async load<T extends IModel>(
@@ -41,6 +41,10 @@ export class Storage {
     const data = await this.kvstore.get(
       `${model.modelConstructor.storagePrefix}${key}`
     )
+
+    if (data === null) {
+      return null
+    }
 
     return model.modelConstructor.fromJson(data)
   }

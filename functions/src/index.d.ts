@@ -13,16 +13,40 @@ declare module 'kvstore' {
     getCounterKeys(): Promise<Array<String>>
   }
 
-  export default KVStore
+  const kvstore: KVStore
+
+  export default kvstore
 }
 
 declare module 'pubnub' {
+  type PublishOptions = { message: any; channel: string }
+
   class PubNub {
     grant(options: any): Promise<void>
-    publish(options: { message: any; channel: string }): Promise<void>
+    publish(options: PublishOptions): Promise<void>
+    fire(options: PublishOptions): Promise<void>
   }
 
-  export const pubnub: PubNub
+  const pubnub: PubNub
+
+  export default pubnub
+}
+
+declare module 'xhr' {
+  class XHR {
+    fetch(
+      url: string,
+      options: {
+        method: string
+        headers: Record<string, string>
+        body: string
+      }
+    ): Promise<void>
+  }
+
+  const xhr: XHR
+
+  export default xhr
 }
 
 declare module 'internal' {
@@ -53,3 +77,6 @@ declare module 'internal' {
 
   export const request: Request
 }
+
+declare const ENV_SENDGRID_API_KEY: string
+declare const ENV_SENDGRID_IDENTITY: string

@@ -30,6 +30,7 @@ dependencies:
   emoji_picker: ^0.1.0
   flutter_colorpicker: ^0.3.4
   flutter_emoji: ^2.2.1
+  dash_chat: ^1.1.2
 
 dev_dependencies:
   flutter_test:

@@ -1,4 +1,4 @@
-import { pubnub } from 'pubnub'
+import pubnub from 'pubnub'
 
 import {
   Context,

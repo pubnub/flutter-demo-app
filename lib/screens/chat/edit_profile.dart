@@ -51,7 +51,7 @@ class _EditProfileViewState extends State<EditProfileView> {
         content: SingleChildScrollView(
           child: SlidePicker(
             onColorChanged: (color) => currentColor = color,
-            pickerColor: _profile.avatar.color,
+            pickerColor: _profile.avatar.color.withAlpha(255),
             enableAlpha: false,
             paletteType: PaletteType.hsl,
             showLabel: false,
