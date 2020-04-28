@@ -24,7 +24,7 @@ dependencies:
   pubnub: ^1.0.4
   uuid: ^2.0.4
   http: ^0.12.0
-  pin_code_fields: ^2.5.1
+  pin_code_fields: 2.3.0+2
   flutter_dotenv: ^2.1.0
   emoji_picker: ^0.1.0
   flutter_colorpicker: ^0.3.4

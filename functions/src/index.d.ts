@@ -18,6 +18,16 @@ declare module 'kvstore' {
   export default kvstore
 }
 
+declare module 'utils' {
+  export class Utils {
+    randomInt(min: number, max: number): number
+  }
+
+  const utils: Utils
+
+  export default utils
+}
+
 declare module 'pubnub' {
   type PublishOptions = { message: any; channel: string }
 
@@ -50,8 +60,18 @@ declare module 'xhr' {
 }
 
 declare module 'internal' {
+  export class Response {
+    send(body?: string): Promise<void>
+
+    status: number
+    body: string
+    headers: Record<string, string>
+  }
+
   export class Request {
     ok(): Promise<void>
+
+    json(): Promise<any>
 
     verb: string
     pubkey: string
@@ -78,5 +98,5 @@ declare module 'internal' {
   export const request: Request
 }
 
-declare const ENV_SENDGRID_API_KEY: string
-declare const ENV_SENDGRID_IDENTITY: string
+declare const ENV_MAILGUN_API_KEY: string
+declare const ENV_MAILGUN_IDENTITY: string

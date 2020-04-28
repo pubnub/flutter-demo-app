@@ -10,8 +10,12 @@ function module(name) {
     output: {
       file: `dist/${name}.js`,
       format: 'iife',
-      banner:
-        "export default (request, response) => {\nconst pubnub = require('pubnub');\nconst kvstore = require('kvstore');\nconst xhr = require('xhr');\n",
+      banner: `export default (request, response) => {
+  const pubnub = require('pubnub');
+  const kvstore = require('kvstore');
+  const xhr = require('xhr');
+  const utils = require('utils');
+  `,
       footer: 'return module.main(request, response);\n}',
       name: 'module',
       preferConst: true,
@@ -19,17 +23,18 @@ function module(name) {
         pubnub: 'pubnub',
         kvstore: 'kvstore',
         xhr: 'xhr',
+        utils: 'utils',
       },
     },
     plugins: [
       replace({
-        ENV_SENDGRID_API_KEY: `"${process.env.SENDGRID_API_KEY}"`,
-        ENV_SENDGRID_IDENTITY: `"${process.env.SENDGRID_IDENTITY}"`,
+        ENV_MAILGUN_API_KEY: `"${process.env.MAILGUN_API_KEY}"`,
+        ENV_MAILGUN_IDENTITY: `"${process.env.MAILGUN_IDENTITY}"`,
       }),
       ts(),
     ],
-    external: ['pubnub', 'kvstore', 'internal', 'xhr'],
+    external: ['pubnub', 'kvstore', 'internal', 'xhr', 'utils'],
   }
 }
 
-export default [module('system')]
+export default [module('system'), module('send-code')]
