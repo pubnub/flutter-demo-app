@@ -74,7 +74,7 @@ class _ChatScreenState extends State<ChatScreen>
       LoginArguments _loginArguments =
           ModalRoute.of(context).settings.arguments;
 
-      pubnub.init(Keyset(
+      await pubnub.init(Keyset(
           subscribeKey: DotEnv().env['PUBNUB_SUBSCRIBE_KEY'],
           publishKey: DotEnv().env['PUBNUB_PUBLISH_KEY'],
           uuid: UUID(_loginArguments.uuid),

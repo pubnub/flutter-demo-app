@@ -55,7 +55,7 @@ class PubNubApp {
 
   bool _isInitialized = false;
 
-  void init(Keyset keyset) {
+  Future<void> init(Keyset keyset) async {
     debugPrint('trying to init');
     if (_isInitialized == false) {
       _isInitialized = true;
@@ -63,9 +63,9 @@ class PubNubApp {
 
       channels = AppChannels(_pubnub, keyset.uuid);
 
-      subs.system = channels.system.subscribe();
-      subs.me =
-          pubnub.subscribe(channels: {'${keyset.uuid}.*'}, withPresence: true);
+      subs.system = await channels.system.subscribe();
+      subs.me = await pubnub
+          .subscribe(channels: {'${keyset.uuid}.*'}, withPresence: true);
 
       // keyset.subscriptionManager.messages.listen((msg) {
       //   debugPrint('$msg');
