@@ -1,3 +1,11 @@
+# This application was developed against a previous version of Flutter
+
+For more recently updated applications, please see the following resources:
+- https://github.com/pubnub/flutter-ref-app-simple-chat, a basic chat app for web, Android and iOS
+- https://www.pubnub.com/tutorials/getting-started-chat-sdk/, an introductory tutorial to get started with PubNub and Flutter
+- https://github.com/PubNubDevelopers/GettingStarted-Flutter-SDK-Tutorial, the application which accompanies the getting started tutorial
+
+
 # PubNub Flutter Demo App
 
 This is a demo application that showcases PubNub in a Flutter application.
